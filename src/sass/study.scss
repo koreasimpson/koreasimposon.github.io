@@ -1,0 +1,108 @@
+#header {
+	background-color: yellowgreen;
+}
+
+#main {
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+
+	.lnb {
+		width: 200px;
+		background-color: #112233;
+		resize: horizontal;
+
+		.lnb_item {
+			color: #fff;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	.content--wrap {
+		flex: 1;
+	}
+}
+
+.content {
+	&.number-baseball {
+		.choosen-number {
+			display: inline-block;
+			border: 1px solid #eee;
+			padding: 5px;
+		}
+	}
+
+	&.js-stone {
+		.player--wrap {
+			border: 2px solid #112233;
+			background-color: #eee;
+			display: flex;
+
+			.field {
+				border: 1px solid black;
+				flex: 1;
+			}
+
+			.deck {
+				border: 1px solid red;
+				width: 300px;
+			}
+
+			.card {
+				width: 75px;
+				height: 120px;
+				display: inline-block;
+				position: relative;
+				margin-bottom: 10px;
+				background: white;
+				user-select: none;
+
+				&.type_hero {
+					border: 1px solid gold;
+				}
+
+				&.type_normal {
+					border: 1px solid brown;
+				}
+
+				i {
+					display: inline-block;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					color: #fff;
+					border-radius: 50%;
+				}
+				.card_cost {
+					background-color: gray;
+				}
+				.card_att {
+					background-color: black;
+				}
+				.card_hp {
+					background-color: red;
+				}
+			}
+		}
+
+		.card-selected {
+			border: 2px solid red;
+		}
+		.card-turnover {
+			background: gray;
+		}
+
+		.current-situation {
+			margin: 10px auto;
+			text-align: center;
+
+			.button {
+				float: right;
+			}
+		}
+	}
+}

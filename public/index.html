@@ -5,12 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="/public/favicon.ico">
+  <!-- common -->
+  <link rel="stylesheet" href="../src/styles/reset.css">
+  <link rel="stylesheet" href="../src/styles/common.css">
+  <!-- spec -->
+  <link rel="stylesheet" href="../src/styles/main.css">
   <title>구공찬의 웹 페이지</title>
 </head>
 
 <body>
-  <h1>hellow world</h1>
+  <div id="pageLoading">
+    <figure>
+      <img src="/src/assets/img/loading.svg" alt="Loading...">
+    </figure>
+  </div>
+  <div id="pageLoaded" hidden>
+    <header id="header">
+      </header>
+      <main id="main">
+        <section class="section1">a</section>
+        <section class="section2">b</section>
+        <section class="section3">c</section>
+        <section class="section4">d</section>
+        <section class="section5">e</section>
+      </main>
+      <footer id="footer"></footer>
+  </div>
+  <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
+  <script type="text/javascript" src="../src/js/common.js"></script>
+  <script type="text/javascript" src="../src/js/main.js"></script>
 </body>
 
 </html>

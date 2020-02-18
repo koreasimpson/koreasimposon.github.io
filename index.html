@@ -4,28 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=https://90chanho.github.io/public/index.html">
-  <title>Document</title>
-  <style>
-    :root {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    figure {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  </style>
+  <!-- <meta http-equiv="refresh" content="0; url=https://90chanho.github.io/public/index.html"> -->
+  <title>Intro - 구공찬</title>
+  <link rel="icon" href="/public/favicon.ico">
+  <!-- common -->
+  <link rel="stylesheet" href="/src/styles/reset.css">
+  <link rel="stylesheet" href="/src/styles/common.css">
+  <link rel="stylesheet" href="/src/styles/intro.css">
 </head>
 
 <body>
-  <figure>
-    <img src="./src/assets/img/loading.svg" alt="Loading...">
-  </figure>
+  <div id="pageLoading">
+    <figure>
+      <img src="/src/assets/img/loading.svg" alt="Loading...">
+    </figure>
+  </div>
+  <div id="pageLoaded" hidden>
+    <strong class="greetings">
+      Welcome to my webpage, come in?
+      (<a href="/public/">Yes</a> / <a href="/public/" class="non-click">No</a>)
+    </strong>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      function changeTextNo (e) {
+        e.currentTarget.text = 'No'
+      }
+      function changeTextYes (e) {
+        e.currentTarget.text = 'Yes'
+      }
+
+      let answerNo = document.querySelector('.non-click')
+
+      answerNo.addEventListener('mouseover', changeTextYes, false)
+      answerNo.addEventListener('focus', changeTextYes, false)
+      answerNo.addEventListener('mouseleave', changeTextNo, false)
+      answerNo.addEventListener('blur', changeTextNo, false)
+
+      // 엔터키로 입장
+      const _body = document.querySelector('body')
+      _body.addEventListener('keydown', function (e) {
+        if (e.keyCode === 13) {
+          window.location = window.location + '/public/'
+        }
+      })
+    })
+  </script>
 </body>
 
 </html>

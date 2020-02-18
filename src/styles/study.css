@@ -1,0 +1,121 @@
+#header {
+  background-color: yellowgreen;
+}
+
+#main {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#main .lnb {
+  width: 200px;
+  background-color: #112233;
+  resize: horizontal;
+}
+
+#main .lnb .lnb_item {
+  color: #fff;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#main .content--wrap {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.content.number-baseball .choosen-number {
+  display: inline-block;
+  border: 1px solid #eee;
+  padding: 5px;
+}
+
+.content.js-stone .player--wrap {
+  border: 2px solid #112233;
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content.js-stone .player--wrap .field {
+  border: 1px solid black;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.content.js-stone .player--wrap .deck {
+  border: 1px solid red;
+  width: 300px;
+}
+
+.content.js-stone .player--wrap .card {
+  width: 75px;
+  height: 120px;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+  background: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.content.js-stone .player--wrap .card.type_hero {
+  border: 1px solid gold;
+}
+
+.content.js-stone .player--wrap .card.type_normal {
+  border: 1px solid brown;
+}
+
+.content.js-stone .player--wrap .card i {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.content.js-stone .player--wrap .card .card_cost {
+  background-color: gray;
+}
+
+.content.js-stone .player--wrap .card .card_att {
+  background-color: black;
+}
+
+.content.js-stone .player--wrap .card .card_hp {
+  background-color: red;
+}
+
+.content.js-stone .card-selected {
+  border: 2px solid red;
+}
+
+.content.js-stone .card-turnover {
+  background: gray;
+}
+
+.content.js-stone .current-situation {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.content.js-stone .current-situation .button {
+  float: right;
+}
+/*# sourceMappingURL=study.css.map */

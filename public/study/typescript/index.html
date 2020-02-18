@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="/public/favicon.ico">
+  <title>Document</title>
+  <link rel="stylesheet" href="/src/styles/reset.css">
+  <link rel="stylesheet" href="/src/styles/common.css">
+  <link rel="stylesheet" href="/src/styles/study.css">
+</head>
+<body>
+  <div id="pageLoading">
+    <figure>
+      <img src="/src/assets/img/loading.svg" alt="Loading...">
+    </figure>
+  </div>
+  <div id="pageLoaded" hidden>
+    <header id="header"></header>
+    <main id="main">
+      <div class="lnb">
+        <ul>
+          <li class="lnb_item" data-value="content1">구구단을 외자</li>
+          <li class="lnb_item" data-value="content2">숫자 야구</li>
+          <li class="lnb_item" data-value="content3">심플 하스스톤</li>
+          <li class="lnb_item">짝맞추기</li>
+          <li class="lnb_item">틱택토</li>
+        </ul>
+      </div>
+
+      <div class="content--wrap">
+        <!-- 게임1 구구단 -->
+        <section hidden class="content times-table" data-value="content1">
+          <h2>구구단을 외자</h2>
+          <button class="button type_multiple">객관식</button>
+          <button class="button type_answer">주관식</button>
+          <div class="type_multiple-choice">
+            <p>문제 <span class="first-number"></span> X <span class="second-number"></span> 는 무엇일까요?</p>
+            <ol class="option-list">
+              <li class="option first">2</li>
+              <li class="option second">3</li>
+              <li class="option third">4</li>
+              <li class="option fourth">5</li>
+            </ol>
+          </div>
+          <div class="type_short-answer">
+            
+          </div>
+          <p class="question">문제</p>
+          <p></p>
+        </section>
+
+        <!-- 게임2 숫자 야구  -->
+        <section hidden class="content number-baseball" data-value="content2">
+          <h2>숫자 야구</h2>
+          <div>
+            <button class="button choose-number">새 게임</button>
+            <p>새 게임을 하시면 기존 게임의 정답은 알 수 없습니다.</p>
+          </div>
+          <div>
+            <button class="button choose-number">난이도 조절</button>
+            <p>난이도를 변경하시면 새 게임이 시작됩니다.</p>
+            <select name="" id="">
+              <option value="">초급 - 시도횟수 10회 & 힌트 3회</option>
+              <option value="">중급 - 시도횟수 8회 & 힌트 2회</option>
+              <option value="">고급 - 시도횟수 6회 & 힌트 1회</option>
+            </select>
+          </div>
+          <div>
+            <button class="button choose-number">힌트</button>
+            <p>힌트는 3회 이상 시도시 사용할 수 있습니다</p>
+          </div>
+          <ol>
+            <li class="choosen-number first">?</li>
+            <li class="choosen-number second">?</li>
+            <li class="choosen-number third">?</li>
+            <li class="choosen-number fourth">?</li>
+          </ol>
+          <input id="inputNumber" type="text" placeholder="숫자 4자리를 입력하세요" maxlength="4">
+          <button class="button send-number">입력</button>
+          <p class="progress">
+            시도횟수 <span class="attempt-number"></span>회 / 남은횟수 <span class="remain-number"></span>회
+          </p>
+          <p class="result"></p>
+        </section>
+
+        <!-- 게임3 자스스톤 -->
+        <section class="content js-stone" data-value="content3">
+          <h2>자스스톤</h2>
+          <div id="player1" class="player--wrap">
+            <div class="field">
+              <details>
+                <summary>player1의 정보</summary>
+                <ul>
+                  <li>코스트: <span class="cost_remain">10</span>/<span class="cost_maximum">10</span></li>
+                  <li>일반카드의 수: <span class="card_remain">0</span>/<span class="card_maximum">5</span></li>
+                </ul>
+              </details>
+              <span class="card type_hero">
+                <i class="card_cost">1</i>
+                <i class="card_att">1</i>
+                <i class="card_hp">1</i>
+              </span>
+              <div class="normal-card--wrap">
+                <span class="card type_normal"></span>
+              </div>
+            </div>
+            <div class="deck"></div>
+          </div>
+
+          <div class="current-situation">
+            <span>현재 플레이어는 <span class="current-player"></span>입니다.</span>
+            <button class="button turn-over">턴 종료</button>
+          </div>
+
+          <div id="player2" class="player--wrap">
+            <div class="field">
+              <details>
+                <summary>player1의 정보</summary>
+                <ul>
+                  <li>코스트: <span class="cost_remain">10</span>/<span class="cost_maximum">10</span></li>
+                  <li>일반카드의 수: <span class="card_remain">0</span>/<span class="card_maximum">5</span></li>
+                </ul>
+              </details>
+              <span class="card type_hero">
+                <i class="card_cost">1</i>
+                <i class="card_att">1</i>
+                <i class="card_hp">1</i>
+              </span>
+              <div class="normal-card--wrap">
+                <span class="card type_normal"></span>
+              </div>
+            </div>
+            <div class="deck"></div>
+          </div>
+          <p class="rule">빨강이 체력, 노랑이 공격력, 적 영웅의 체력이 0이되면 승리!
+              영웅을 보호하기 위해 쫄병들을 코스트(파란색) 내에서 뽑을 수 있음</p>
+          <div class="card-hidden">
+            <span class="card">
+              <i class="card_cost"></i>
+              <i class="card_att"></i>
+              <i class="card_hp"></i>
+            </span>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+  </div>
+  <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
+  <script type="text/javascript" src="/src/js/common.js"></script>
+  <script type="text/javascript" src="/src/js/studyPage.js"></script>
+  <script type="text/javascript" src="/public/study/typescript/index.js"></script>
+</body>
+</html>
