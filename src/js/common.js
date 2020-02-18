@@ -30,8 +30,8 @@ function ready() {
 	let allOpenPopupLayer = document.querySelectorAll('.open-popup-layer')
 
 	// page loading UI
-	document.querySelector('#pageLoading').hidden = true
-	document.querySelector('#pageLoaded').hidden = false
+	document.querySelector('#pageLoading').classList.add('hide')
+	document.querySelector('#pageLoaded').classList.remove('hide')
 
 	// gnb item(study) show
 	lnbItemStudy.addEventListener('click', function(e) {

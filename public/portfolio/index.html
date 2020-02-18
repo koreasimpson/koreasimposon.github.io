@@ -13,11 +13,18 @@
 </head>
 
 <body>
-  <header id="header"></header>
-  <main id="main"></main>
-  <footer id="footer"></footer>
+  <div id="pageLoading">
+    <figure>
+      <img src="/src/assets/img/loading.svg" alt="Loading...">
+    </figure>
+  </div>
+  <div id="pageLoaded" class="hide">
+    <header id="header"></header>
+    <main id="main"></main>
+    <footer id="footer"></footer>
+  </div>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
-  <script type="text/javascript" src="../src/js/common.js"></script>
+  <script type="text/javascript" src="/src/js/common.js"></script>
 </body>
 
 </html>

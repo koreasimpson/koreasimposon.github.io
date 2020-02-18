@@ -1,3 +1,13 @@
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.hide {
+	display: none !important;
+}
+
 // layout
 #pageLoaded {
 	display: flex;
@@ -60,9 +70,6 @@
 }
 
 // footer style
-#footer {
-}
-
 @media screen and (min-width: 1024px) {
 }
 

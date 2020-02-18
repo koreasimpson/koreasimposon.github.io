@@ -205,12 +205,6 @@ th {
 	font-weight: 700;
 }
 
-.clearfix::after {
-	content: '';
-	display: block;
-	clear: both;
-}
-
 a {
 	color: #000;
 }
