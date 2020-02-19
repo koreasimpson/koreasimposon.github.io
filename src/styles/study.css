@@ -118,4 +118,10 @@
 .content.js-stone .current-situation .button {
   float: right;
 }
+
+.content.rock-paper-scissors #computer {
+  width: 142px;
+  height: 200px;
+  background-position: 0 0;
+}
 /*# sourceMappingURL=study.css.map */
