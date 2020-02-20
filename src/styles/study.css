@@ -124,4 +124,51 @@
   height: 200px;
   background-position: 0 0;
 }
+
+.content.pair .card {
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 70px;
+  height: 100px;
+  -webkit-perspective: 140px;
+          perspective: 140px;
+}
+
+.content.pair .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.content.pair .card.flipped .card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.content.pair .card-front {
+  background: navy;
+}
+
+.content.pair .card-front, .content.pair .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.content.pair .card-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
 /*# sourceMappingURL=study.css.map */
