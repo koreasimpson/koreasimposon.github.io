@@ -158,7 +158,8 @@
   background: navy;
 }
 
-.content.pair .card-front, .content.pair .card-back {
+.content.pair .card-front,
+.content.pair .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -170,5 +171,16 @@
 .content.pair .card-back {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.content.tic-tac-toe table {
+  border-collapse: collapse;
+}
+
+.content.tic-tac-toe td {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  text-align: center;
 }
 /*# sourceMappingURL=study.css.map */

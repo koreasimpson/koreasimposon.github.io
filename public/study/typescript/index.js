@@ -205,12 +205,15 @@ function redrawHero(target) {
     connectCardDOM(target.heroData, target.hero, true);
 }
 function connectCardDOM(data, DOM, hero) {
-    var cardEl = document.querySelector('.card-hidden .card').cloneNode(true);
+    var cardEl = document
+        .querySelector('.card-hidden .card')
+        .cloneNode(true);
     cardEl.querySelector('.card_att').textContent = String(data.att);
     cardEl.querySelector('.card_hp').textContent = String(data.hp);
     if (hero) {
         ;
-        cardEl.querySelector('.card_cost').style.display = 'none';
+        cardEl.querySelector('.card_cost').style.display =
+            'none';
         var name_1 = document.createElement('div');
         name_1.textContent = '영웅';
         cardEl.appendChild(name_1);
@@ -376,7 +379,20 @@ document.querySelectorAll('.rock-paper-scissors .btn').forEach(function (btn) {
 var pair = {
     horizontal: 4,
     vertical: 3,
-    colors: ['red', 'red', 'orange', 'orange', 'green', 'green', 'yellow', 'yellow', 'white', 'white', 'black', 'black']
+    colors: [
+        'red',
+        'red',
+        'orange',
+        'orange',
+        'green',
+        'green',
+        'yellow',
+        'yellow',
+        'white',
+        'white',
+        'black',
+        'black'
+    ]
 };
 var colorCandidate = pair.colors.slice();
 var color = [];
@@ -461,3 +477,81 @@ reGameButton.addEventListener('click', function () {
 });
 shuffle();
 setCard(pair.horizontal, pair.vertical);
+// --------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------
+// 틱택토
+var table = document.createElement('table');
+var rows = [];
+var cells = [];
+var t3Turn = 'X';
+var t3Result = document.createElement('div');
+var count = 0;
+function callback(event) {
+    var rowIndex = rows.indexOf(event.currentTarget
+        .parentNode);
+    var cellIndex = cells[rowIndex].indexOf(event.currentTarget);
+    count++;
+    if (cells[rowIndex][cellIndex].textContent !== '') {
+        console.log('빈 칸이 아닙니다.');
+    }
+    else {
+        cells[rowIndex][cellIndex].textContent = t3Turn;
+        var full = false;
+        if (cells[rowIndex][0].textContent === t3Turn &&
+            cells[rowIndex][1].textContent === t3Turn &&
+            cells[rowIndex][2].textContent === t3Turn) {
+            full = true;
+        }
+        if (cells[0][cellIndex].textContent === t3Turn &&
+            cells[1][cellIndex].textContent === t3Turn &&
+            cells[2][cellIndex].textContent === t3Turn) {
+            full = true;
+        }
+        if (cells[0][0].textContent === t3Turn &&
+            cells[1][1].textContent === t3Turn &&
+            cells[2][2].textContent === t3Turn) {
+            full = true;
+        }
+        if (cells[0][2].textContent === t3Turn &&
+            cells[1][1].textContent === t3Turn &&
+            cells[2][0].textContent === t3Turn) {
+            full = true;
+        }
+        if (full) {
+            t3Result.textContent = t3Turn + "\uB2D8\uC774 \uC2B9\uB9AC!";
+            t3Turn = 'X';
+            cells.forEach(function (row) {
+                row.forEach(function (cell) {
+                    cell.textContent = '';
+                });
+            });
+        }
+        else if (count === 9) {
+            t3Result.textContent = "\uBB34\uC2B9\uBD80!!";
+            t3Turn = 'X';
+            cells.forEach(function (row) {
+                row.forEach(function (cell) {
+                    cell.textContent = '';
+                });
+            });
+        }
+        else {
+            t3Turn = t3Turn === 'O' ? 'X' : 'O';
+        }
+    }
+}
+for (var i = 1; i <= 3; i++) {
+    var row = document.createElement('tr');
+    rows.push(row);
+    cells.push([]);
+    for (var j = 1; j <= 3; j++) {
+        var cell = document.createElement('td');
+        cell.addEventListener('click', callback);
+        cells[i - 1].push(cell);
+        row.appendChild(cell);
+    }
+    table.appendChild(row);
+}
+var contentWrap = document.querySelector('.content.tic-tac-toe > div');
+contentWrap.appendChild(table);
+contentWrap.appendChild(t3Result);

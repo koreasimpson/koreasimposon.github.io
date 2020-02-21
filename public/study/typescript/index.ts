@@ -54,7 +54,7 @@ let buttonSendNumber = contentBody.querySelector('.button.send-number')!
 let baseballGameResult = contentBody.querySelector('.result')!
 
 function chooseNumber() {
-	candidate = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+	candidate = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	selectNumbers = []
 	strike = 0
 	ball = 0
@@ -193,7 +193,7 @@ const turnButton = document.querySelector('.turn-over') as HTMLButtonElement
 let turn = true // true면 내턴, false면 상대 턴
 
 function initiate() {
-	;[ opponent, me ].forEach(function(item) {
+	;[opponent, me].forEach(function(item) {
 		item.deckData = []
 		item.heroData = null
 		item.fieldData = []
@@ -253,11 +253,14 @@ function redrawHero(target: Player) {
 }
 
 function connectCardDOM(data: Card, DOM: HTMLElement, hero?: boolean) {
-	const cardEl = document.querySelector('.card-hidden .card')!.cloneNode(true) as HTMLDivElement
+	const cardEl = document
+		.querySelector('.card-hidden .card')!
+		.cloneNode(true) as HTMLDivElement
 	cardEl.querySelector('.card_att')!.textContent = String(data.att)
 	cardEl.querySelector('.card_hp')!.textContent = String(data.hp)
 	if (hero) {
-		;(cardEl.querySelector('.card_cost') as HTMLDivElement).style.display = 'none'
+		;(cardEl.querySelector('.card_cost') as HTMLDivElement).style.display =
+			'none'
 		const name = document.createElement('div')
 		name.textContent = '영웅'
 		cardEl.appendChild(name)
@@ -385,7 +388,9 @@ const score = {
 }
 
 function computerChoice(imgCoords: RSP[keyof RSP]): keyof RSP {
-	return (Object.keys(rsp) as ['ROCK', 'SCISSORS', 'PAPER']).find((k) => rsp[k] === imgCoords)!
+	return (Object.keys(rsp) as ['ROCK', 'SCISSORS', 'PAPER']).find(
+		k => rsp[k] === imgCoords
+	)!
 }
 
 let interval: number
@@ -401,7 +406,9 @@ function intervalMaker() {
 		}
 
 		if (document.querySelector('#computer')) {
-			;(document.querySelector('#computer') as HTMLDivElement).style.background =
+			;(document.querySelector(
+				'#computer'
+			) as HTMLDivElement).style.background =
 				'url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ' + imgCoords + ' 0'
 		}
 	}, 100)
@@ -409,7 +416,7 @@ function intervalMaker() {
 
 intervalMaker()
 
-document.querySelectorAll('.rock-paper-scissors .btn').forEach((btn) => {
+document.querySelectorAll('.rock-paper-scissors .btn').forEach(btn => {
 	btn.addEventListener('click', function(this: HTMLButtonElement) {
 		clearInterval(interval)
 		setTimeout(intervalMaker, 1000)
@@ -419,7 +426,7 @@ document.querySelectorAll('.rock-paper-scissors .btn').forEach((btn) => {
 		const diff = myScore - computerScore
 		if (diff === 0) {
 			console.log('비겻다')
-		} else if ([ -1, 2 ].includes(diff)) {
+		} else if ([-1, 2].includes(diff)) {
 			console.log('이겼다')
 		} else {
 			console.log('졌다!!!!!!')
@@ -427,15 +434,27 @@ document.querySelectorAll('.rock-paper-scissors .btn').forEach((btn) => {
 	})
 })
 
-
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
 // 짝 맞추기
 
-const pair: {horizontal: number, vertical: number, colors: string[]} = {
+const pair: { horizontal: number; vertical: number; colors: string[] } = {
 	horizontal: 4,
 	vertical: 3,
-	colors: ['red', 'red', 'orange', 'orange', 'green', 'green', 'yellow', 'yellow', 'white', 'white', 'black', 'black']
+	colors: [
+		'red',
+		'red',
+		'orange',
+		'orange',
+		'green',
+		'green',
+		'yellow',
+		'yellow',
+		'white',
+		'white',
+		'black',
+		'black'
+	]
 }
 
 let colorCandidate = pair.colors.slice()
@@ -443,17 +462,22 @@ let color: string[] = []
 let clickFlag: boolean = true
 let clickCard: HTMLDivElement[] = []
 let completeCard: HTMLDivElement[] = []
-let startTime:number | null = new Date().getTime()
+let startTime: number | null = new Date().getTime()
 
-function shuffle ():void {
-	for (let i:number = 0; colorCandidate.length > 0; ++i) {
-		color = color.concat(colorCandidate.splice(Math.floor(Math.random() * colorCandidate.length), 1))
+function shuffle(): void {
+	for (let i: number = 0; colorCandidate.length > 0; ++i) {
+		color = color.concat(
+			colorCandidate.splice(
+				Math.floor(Math.random() * colorCandidate.length),
+				1
+			)
+		)
 	}
 }
 
-function setCard (horizontal:number, vertical:number): void {
+function setCard(horizontal: number, vertical: number): void {
 	clickFlag = false
-	for (let i:number = 0; i < horizontal * vertical; ++i) {
+	for (let i: number = 0; i < horizontal * vertical; ++i) {
 		const card = document.createElement('div')
 		card.className = 'card'
 		const cardInner = document.createElement('div')
@@ -463,26 +487,30 @@ function setCard (horizontal:number, vertical:number): void {
 		const cardBack = document.createElement('div')
 		cardBack.className = 'card-back'
 		cardBack.style.backgroundColor = color[i]
-		cardInner.appendChild(cardFront);
-		cardInner.appendChild(cardBack);
+		cardInner.appendChild(cardFront)
+		cardInner.appendChild(cardBack)
 		card.appendChild(cardInner)
 
-		card.addEventListener('click', function () {
+		card.addEventListener('click', function() {
 			console.log(this)
 			if (clickFlag && !completeCard.includes(this)) {
 				console.log('what')
 				this.classList.toggle('flipped')
 				clickCard.push(this)
-				if(clickCard.length === 2) {
-					const firstBackground = (clickCard[0].querySelector('.card-back') as HTMLDivElement).style.backgroundColor
-					const secondBackground = (clickCard[1].querySelector('.card-back') as HTMLDivElement).style.backgroundColor
-					if(firstBackground === secondBackground) {
+				if (clickCard.length === 2) {
+					const firstBackground = (clickCard[0].querySelector(
+						'.card-back'
+					) as HTMLDivElement).style.backgroundColor
+					const secondBackground = (clickCard[1].querySelector(
+						'.card-back'
+					) as HTMLDivElement).style.backgroundColor
+					if (firstBackground === secondBackground) {
 						completeCard.push(clickCard[0])
 						completeCard.push(clickCard[1])
 						clickCard = []
 
 						if (completeCard.length === horizontal * vertical) {
-							const endTime:number = new Date().getTime()
+							const endTime: number = new Date().getTime()
 							alert(`축하합니다 ${(endTime - startTime!) / 1000}초 걸렸습니다`)
 							document.querySelector('.card--wrap')!.innerHTML = ''
 							colorCandidate = color.slice()
@@ -523,10 +551,107 @@ function setCard (horizontal:number, vertical:number): void {
 	clickFlag = true
 }
 
-let reGameButton = (document.querySelector('.content.pair button') as HTMLButtonElement)
-reGameButton.addEventListener('click', function () {
+let reGameButton = document.querySelector(
+	'.content.pair button'
+) as HTMLButtonElement
+reGameButton.addEventListener('click', function() {
 	setCard(pair.horizontal, pair.vertical)
 })
 
 shuffle()
 setCard(pair.horizontal, pair.vertical)
+
+// --------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------
+// 틱택토
+
+const table: HTMLTableElement = document.createElement('table')
+const rows: HTMLTableRowElement[] = []
+const cells: HTMLTableCellElement[][] = []
+let t3Turn: 'O' | 'X' = 'X'
+const t3Result: HTMLDivElement = document.createElement('div')
+let count: number = 0
+
+function callback(event: MouseEvent) {
+	const rowIndex: number = rows.indexOf(
+		(event.currentTarget as HTMLTableCellElement)
+			.parentNode as HTMLTableRowElement
+	)
+	const cellIndex: number = cells[rowIndex].indexOf(
+		event.currentTarget as HTMLTableCellElement
+	)
+	count++
+
+	if (cells[rowIndex][cellIndex].textContent !== '') {
+		console.log('빈 칸이 아닙니다.')
+	} else {
+		cells[rowIndex][cellIndex].textContent = t3Turn
+
+		let full: boolean = false
+		if (
+			cells[rowIndex][0].textContent === t3Turn &&
+			cells[rowIndex][1].textContent === t3Turn &&
+			cells[rowIndex][2].textContent === t3Turn
+		) {
+			full = true
+		}
+		if (
+			cells[0][cellIndex].textContent === t3Turn &&
+			cells[1][cellIndex].textContent === t3Turn &&
+			cells[2][cellIndex].textContent === t3Turn
+		) {
+			full = true
+		}
+		if (
+			cells[0][0].textContent === t3Turn &&
+			cells[1][1].textContent === t3Turn &&
+			cells[2][2].textContent === t3Turn
+		) {
+			full = true
+		}
+		if (
+			cells[0][2].textContent === t3Turn &&
+			cells[1][1].textContent === t3Turn &&
+			cells[2][0].textContent === t3Turn
+		) {
+			full = true
+		}
+		if (full) {
+			t3Result.textContent = `${t3Turn}님이 승리!`
+			t3Turn = 'X'
+			cells.forEach(row => {
+				row.forEach(cell => {
+					cell.textContent = ''
+				})
+			})
+		} else if (count === 9) {
+			t3Result.textContent = `무승부!!`
+			t3Turn = 'X'
+			cells.forEach(row => {
+				row.forEach(cell => {
+					cell.textContent = ''
+				})
+			})
+		} else {
+			t3Turn = t3Turn === 'O' ? 'X' : 'O'
+		}
+	}
+}
+
+for (let i: number = 1; i <= 3; i++) {
+	const row: HTMLTableRowElement = document.createElement('tr')
+	rows.push(row)
+	cells.push([])
+	for (let j: number = 1; j <= 3; j++) {
+		const cell: HTMLTableCellElement = document.createElement('td')
+		cell.addEventListener('click', callback)
+		cells[i - 1].push(cell)
+		row.appendChild(cell)
+	}
+	table.appendChild(row)
+}
+const contentWrap: HTMLDivElement = document.querySelector(
+	'.content.tic-tac-toe > div'
+) as HTMLDivElement
+contentWrap.appendChild(table)
+contentWrap.appendChild(t3Result)
