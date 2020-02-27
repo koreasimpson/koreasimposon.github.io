@@ -1,4 +1,4 @@
-.trs-3s {
+.trs-300ms {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -111,8 +111,19 @@
 
 .icon {
   display: inline-block;
-  background-position: 0 0;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.icon.icon-left, .icon.icon-right {
+  background-image: url("../assets/img/arrow.png");
+}
+
+#pageLoading {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
 }
 
 #pageLoading :root {
@@ -204,5 +215,6 @@ body {
 #footer {
   background-color: #000;
   color: #fff;
+  text-align: center;
 }
 /*# sourceMappingURL=common.css.map */

@@ -19,23 +19,83 @@
 		<div id="pageLoaded" class="hide">
 			<header id="header"></header>
 			<main id="main">
-				<div class="lnb">
-					<ul>
-						<li class="lnb_item" data-value="content1">구구단을 외자</li>
-						<li class="lnb_item" data-value="content2">숫자 야구</li>
-						<li class="lnb_item" data-value="content3">심플 하스스톤</li>
-						<li class="lnb_item" data-value="content4">가위바위보</li>
-						<li class="lnb_item" data-value="content5">짝맞추기</li>
-						<li class="lnb_item" data-value="content6">틱택토</li>
+				<div class="nav">
+					<span class="handler prev"
+						><i class="icon icon-left trs-300ms"></i
+					></span>
+					<span class="handler next"
+						><i class="icon icon-right trs-300ms"></i
+					></span>
+					<ul class="trs-300ms nav_item--wrap">
+						<li class="nav_item trs-300ms" data-value="content1">
+							<div>
+								<strong class="title">구구단을 외자</strong>
+								<span
+									>1단부터 9단까지 제한시간 내에 구구단의 정답을 맞추는
+									게임</span
+								>
+							</div>
+						</li>
+						<li class="nav_item trs-300ms" data-value="content2">숫자 야구</li>
+						<li class="nav_item trs-300ms" data-value="content3">
+							심플 하스스톤
+						</li>
+						<li class="nav_item trs-300ms" data-value="content4">가위바위보</li>
+						<li class="nav_item trs-300ms" data-value="content5">짝맞추기</li>
+						<li class="nav_item trs-300ms" data-value="content6">틱택토</li>
 					</ul>
 				</div>
 
 				<div class="content--wrap">
 					<!-- 게임1 구구단 -->
-					<section hidden class="content times-table" data-value="content1">
+					<section class="content times-table" data-value="content1">
 						<h2>구구단을 외자</h2>
-						<button class="button type_multiple">객관식</button>
-						<button class="button type_answer">주관식</button>
+						<div>
+							<label for="content1diffculty1"
+								><input
+									id="content1diffculty1"
+									type="radio"
+									name="content1diffcult"
+									value="beginner"
+								/>초급</label
+							>
+							<label for="content1diffculty2"
+								><input
+									id="content1diffculty2"
+									type="radio"
+									name="content1diffcult"
+									value="intermediate"
+								/>중급</label
+							>
+							<label for="content1diffculty3"
+								><input
+									id="content1diffculty3"
+									type="radio"
+									name="content1diffcult"
+									value="advanced"
+								/>고급</label
+							>
+						</div>
+						<div>
+							<label for="content1type1"
+								><input
+									id="content1type1"
+									type="radio"
+									name="content1type"
+									value="multiple"
+								/>객관식</label
+							>
+							<label for="content1type2"
+								><input
+									id="content1type2"
+									type="radio"
+									name="content1type"
+									value="answer"
+								/>객관식</label
+							>
+							<button class="button type_multiple">객관식</button>
+							<button class="button type_answer">주관식</button>
+						</div>
 						<div class="type_multiple-choice">
 							<p>
 								문제 <span class="first-number"></span> X
@@ -203,7 +263,7 @@
 					</section>
 
 					<!-- 게임6 틱택토 -->
-					<section class="content tic-tac-toe" data-value="content6">
+					<section class="content tic-tac-toe" data-value="content6" hidden>
 						<div></div>
 					</section>
 				</div>
@@ -212,10 +272,43 @@
 		</div>
 		<script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
 		<script type="text/javascript" src="/src/js/common.js"></script>
-		<script type="text/javascript" src="/src/js/studyPage.js"></script>
 		<script
 			type="text/javascript"
 			src="/public/study/typescript/index.js"
 		></script>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+				const navList = document.querySelector('#main .nav ul')
+				const navListHandler = document.querySelectorAll('#main .nav .handler')
+				const navItems = document.querySelectorAll('#main .nav .nav_item')
+				const elSection = document.querySelectorAll('section')
+				let navListIndex = 1
+
+				function hideElSection() {
+					elSection.forEach(function(item) {
+						item.hidden = true
+					})
+				}
+
+				function removeAvtiveClass() {
+					navItems.forEach(function(item) {
+						item.classList.remove('is-active')
+					})
+				}
+
+				navItems.forEach(function(item) {
+					item.addEventListener('click', function(e) {
+						hideElSection()
+						removeAvtiveClass()
+						e.currentTarget.classList.add('is-active')
+						console.log(e.currentTarget.clientWidth)
+						currentContent = e.currentTarget.dataset.value
+						document.querySelector(
+							`section[data-value='${currentContent}']`
+						).hidden = false
+					})
+				})
+			})
+		</script>
 	</body>
 </html>
