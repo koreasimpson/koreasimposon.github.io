@@ -1,3 +1,18 @@
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+}
+
+.a11y-hidden.more {
+  position: static;
+}
+
 .trs-300ms {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -116,8 +131,14 @@
   background-size: contain;
 }
 
-.icon.icon-left, .icon.icon-right {
+.icon.icon--left, .icon.icon--right {
   background-image: url("../assets/img/arrow.png");
+}
+
+.icon.icon--new-tab {
+  background-image: url("../assets/img/new_tab.svg");
+  width: 1rem;
+  height: 1rem;
 }
 
 #pageLoading {
@@ -216,5 +237,21 @@ body {
   background-color: #000;
   color: #fff;
   text-align: center;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  line-height: 1.7;
+}
+
+#footer b {
+  font-size: 30px;
+}
+
+#footer a {
+  color: inherit;
+}
+
+#footer small {
+  display: block;
+  padding-top: 10px;
 }
 /*# sourceMappingURL=common.css.map */

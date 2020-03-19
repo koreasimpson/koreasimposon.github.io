@@ -1,13 +1,19 @@
 @import './common.scss';
 #header {
 	position: absolute;
+
+	.logo {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+	}
 }
 #main {
 	section {
-		min-height: 100vh;
 		position: relative;
 	}
 	.section1 {
+		min-height: 100vh;
 		padding-top: 100px;
 		background-color: black;
 		.intro {
@@ -67,14 +73,8 @@
 			font-size: 2rem;
 			width: 40vw;
 			float: right;
-			padding-top: 30px;
-			padding-right: 20px;
 			white-space: nowrap;
-
-			&::first-letter {
-				font-size: 8rem;
-				float: left;
-			}
+			line-height: 2.5;
 
 			span:hover {
 				strong {
