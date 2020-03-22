@@ -1,14 +1,3 @@
-// var
-$themeColor: #f23c4a;
-
-// mixin
-@mixin pos-x-y-center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
 // common class style
 .a11y-hidden {
 	overflow: hidden;
@@ -24,17 +13,21 @@ $themeColor: #f23c4a;
 		position: static;
 	}
 }
+
 .trs-300ms {
 	transition: all 0.3s;
 }
+
 .clearfix::after {
 	content: '';
 	display: block;
 	clear: both;
 }
+
 .hide {
 	display: none !important;
 }
+
 .popup-layer {
 	transform: scale(0);
 	transition: 0.25s transform;
@@ -88,6 +81,7 @@ $themeColor: #f23c4a;
 		}
 	}
 }
+
 // loading
 .loading {
 	display: inline-block;
@@ -105,6 +99,7 @@ $themeColor: #f23c4a;
 		background-position: -800px 0;
 	}
 }
+
 // icon
 .icon {
 	display: inline-block;
@@ -114,11 +109,11 @@ $themeColor: #f23c4a;
 
 	&.icon--left,
 	&.icon--right {
-		background-image: url('../assets/img/arrow.png');
+		background-image: url('/src/assets/img/arrow.png');
 	}
 
 	&.icon--new-tab {
-		background-image: url('../assets/img/new_tab.svg');
+		background-image: url('/src/assets/img/new_tab.svg');
 		width: 1rem;
 		height: 1rem;
 	}
@@ -143,6 +138,7 @@ $themeColor: #f23c4a;
 		transform: translate(-50%, -50%);
 	}
 }
+
 #pageLoaded {
 	display: flex;
 	flex-direction: column;
@@ -151,12 +147,6 @@ $themeColor: #f23c4a;
 }
 
 // common components
-html,
-body {
-	width: 100%;
-	height: 100%;
-	background-color: #000;
-}
 #header {
 	position: static;
 	top: 0;
@@ -226,7 +216,6 @@ body {
 	}
 }
 
-// footer style
 @media screen and (min-width: 1024px) {
 }
 

@@ -1,50 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="refresh" content="0; url=https://90chanho.github.io/public/index.html"> -->
-  <title>Intro - 구공찬</title>
-  <link rel="icon" href="/public/favicon.ico">
-  <!-- common -->
-  <link rel="stylesheet" href="/src/styles/reset.css">
-  <link rel="stylesheet" href="/src/styles/common.css">
-  <link rel="stylesheet" href="/src/styles/intro.css">
-</head>
-
-<body>
-  <div id="pageLoaded">
-    <strong class="greetings">
-      Welcome to my webpage, come in?
-      (<a href="/public/">Yes</a> / <a href="/public/" class="non-click">No</a>)
-    </strong>
-  </div>
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      function changeTextNo (e) {
-        e.currentTarget.text = 'No'
-      }
-      function changeTextYes (e) {
-        e.currentTarget.text = 'Yes'
-      }
-
-      let answerNo = document.querySelector('.non-click')
-
-      answerNo.addEventListener('mouseover', changeTextYes, false)
-      answerNo.addEventListener('focus', changeTextYes, false)
-      answerNo.addEventListener('mouseleave', changeTextNo, false)
-      answerNo.addEventListener('blur', changeTextNo, false)
-
-      // 엔터키로 입장
-      const _body = document.querySelector('body')
-      _body.addEventListener('keydown', function (e) {
-        if (e.keyCode === 13) {
-          window.location = window.location + '/public/'
-        }
-      })
-    })
-  </script>
-</body>
-
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <meta
+			http-equiv="refresh"
+			content="0; url=https://localhost:8080/public/intro/"
+		/> -->
+		<title>Intro - 구공찬</title>
+		<link rel="icon" href="/public/favicon.ico" />
+	</head>
+	<body></body>
 </html>

@@ -2,18 +2,23 @@ const path = require('path')
 const webpack = require('webpack')
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
 	mode: 'development',
 	entry: {
-		app: './src/main/js/main.js'
+		'intro/intro': './src/js/intro.js',
+		'main/main': './src/js/main.js'
 	},
 	output: {
-		path: path.resolve('./dist/main'),
+		// path: path.resolve('./dist/main'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].js'
+	},
+	devServer: {
+		overlay: true,
+		stats: 'errors-only'
 	},
 	module: {
 		rules: [
@@ -44,12 +49,6 @@ module.exports = {
 	},
 	plugins: [
 		// new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({
-			template: './src/main/index.html',
-			templateParameters: {
-				env: process.env.NODE_ENV === 'production' ? '배포용' : '개발용'
-			}
-		}),
 		...(process.env.NODE_ENV === 'production'
 			? [new MiniCssExtractPlugin({ filename: '[name].css' })]
 			: [])
