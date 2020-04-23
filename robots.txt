@@ -1,0 +1,7 @@
+User-agent: Googlebot-news 
+Allow: / 
+​
+User-agent: * 
+Disallow: / 
+
+Sitemap: https://90chanho.github.io/sitemap.xml

@@ -1,56 +1,61 @@
-const path = require('path')
-const webpack = require('webpack')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require("path")
+const webpack = require("webpack")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || "development"
 
 module.exports = {
-	mode: 'development',
+	mode: "development",
 	entry: {
-		'intro/intro': './src/js/intro.js',
-		'main/main': './src/js/main.js'
+		"index": "./src/js/index.js",
 	},
 	output: {
-		// path: path.resolve('./dist/main'),
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].js'
+		path: path.resolve(__dirname),
+		filename: "[name].js"
 	},
 	devServer: {
+		contentBase: path.join(__dirname),
+		publicPath: "/",
 		overlay: true,
-		stats: 'errors-only'
+		stats: "errors-only"
 	},
 	module: {
 		rules: [
 			{
 				test: /\.(css|scss)$/,
 				use: [
-					process.env.NODE_ENV === 'production'
-						? MiniCssExtractPlugin.loader
-						: 'style-loader',
-					'css-loader',
-					'sass-loader'
+					process.env.NODE_ENV === "production" ? MiniCssExtractPlugin.loader : "style-loader",
+					"css-loader",
+					"sass-loader"
 				]
 			},
 			{
 				test: /\.js$/,
-				use: ['babel-loader'],
+				use: ["babel-loader"],
 				exclude: /node_modules/
 			},
 			{
 				test: /\.(png|jpg|svg|gif)$/,
-				loader: 'url-loader',
+				loader: "url-loader",
 				options: {
-					name: '[name].[ext]?[hash]',
+					name: "[name].[ext]?[hash]",
 					limit: 10000 // 10Kb
 				}
 			}
 		]
 	},
 	plugins: [
-		// new CleanWebpackPlugin(),
-		...(process.env.NODE_ENV === 'production'
-			? [new MiniCssExtractPlugin({ filename: '[name].css' })]
+		new HtmlWebpackPlugin({
+			template: "./src/view/index.html",
+			filename: "index.html",
+			templateParameters: {
+				env: process.env.NODE_ENV === "production" ? "배포" : "개발"
+			},
+			chunks: ["index"]
+		}),
+		...(process.env.NODE_ENV === "production"
+			? [new MiniCssExtractPlugin({ filename: "[name].css" })]
 			: [])
 	]
 }
