@@ -1,0 +1,26 @@
+name: PR Stats
+on:
+  workflow_dispatch: # 액션이 실행될 이벤트를 작성하세요.
+jobs:
+  pr-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: PR Stats
+        uses: "naver/pr-stats@v1.0.0"
+        with:
+          token: ${{ secrets.SUBMODULE_TOKEN }}
+          period: "2024-01-01~2024-12-31"
+          ignoreUsers: "sonarqube[bot]"
+          #baseBranch: "main,release"
+      - name: Create Pull Request
+        uses: "peter-evans/create-pull-request@v7"
+        with:
+          token: ${{ secrets.SUBMODULE_TOKEN }}
+          branch: "pr-stats"
+          title: "[Misc] pr-stats"
+          body: "Automated changes by pr-stats"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          commit-message: Update pr-stats
