@@ -12,12 +12,12 @@ jobs:
         with:
           period: "2020-01-01~2024-12-31"
           ignoreUsers: "sonarqube[bot]"
-          baseBranch: "main,release"
+          baseBranch: "main,release, develop"
       - name: Create Pull Request
         uses: "peter-evans/create-pull-request@v7"
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: "pr-stats test"
+          branch: "pr-stats-test"
           title: "[Misc] pr-stats test"
           body: "Automated changes by pr-stats"
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
